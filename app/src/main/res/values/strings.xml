@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MoviesUsingDataBinding</string>
+    <string name="frag_movies">frag_movies</string>
+    <string name="frag_movie_details">frag_movie_details</string>
+</resources>
