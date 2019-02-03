@@ -16,6 +16,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     Context context;
     List<MovieModel> models;
+    OnMovieClickListener onMovieClickListener;
 
     public MoviesAdapter(Context context, List<MovieModel> models) {
         this.context = context;
@@ -34,6 +35,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         MovieModel model = models.get(i);
         viewHolder.itemBinding.setMovie(model);
+        viewHolder.itemBinding.setOnMovie((OnMovieClickListener) context);
         viewHolder.itemBinding.executePendingBindings();
     }
 
