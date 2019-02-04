@@ -15,10 +15,12 @@ public class MovieRecyclerBindingAdapter {
             layoutManager = new GridLayoutManager(recyclerView.getContext(), 2);
             recyclerView.setLayoutManager(layoutManager);
         }
+
         MoviesAdapter adapter = (MoviesAdapter) recyclerView.getAdapter();
         if (adapter == null) {
             adapter = new MoviesAdapter(recyclerView.getContext(), movieModels);
             recyclerView.setAdapter(adapter);
+
         }
     }
 

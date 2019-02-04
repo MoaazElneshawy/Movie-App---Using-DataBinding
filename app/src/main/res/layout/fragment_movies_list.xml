@@ -4,17 +4,27 @@
     <data>
 
         <import type="java.util.List" />
-
+        <import type="android.view.View" />
         <import type="com.moaazfathyelneshawy.moviesusingdatabinding.MovieModel" />
 
         <variable
             name="movies"
             type="List&lt;MovieModel>" />
+
+        <variable
+            name="movieViewModel"
+            type="com.moaazfathyelneshawy.moviesusingdatabinding.MovieViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{movieViewModel.loaded ? View.GONE : View.VISIBLE}" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/frag_refresh"
@@ -25,7 +35,8 @@
                 android:id="@+id/frag_recycler"
                 recycler_movies_adapter="@{movies}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:visibility="@{movieViewModel.loaded ? View.VISIBLE : View.INVISIBLE}"/>
         </android.support.v4.widget.SwipeRefreshLayout>
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 </layout>

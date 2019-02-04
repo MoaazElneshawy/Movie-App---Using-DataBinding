@@ -3,65 +3,75 @@
 
     <data>
 
-        <import type="com.moaazfathyelneshawy.moviesusingdatabinding.MovieModel" />
+        <import type="com.moaazfathyelneshawy.moviesusingdatabinding.MovieViewModel" />
 
         <variable
-            name="movie"
-            type="MovieModel" />
+            name="movieViewModel"
+            type="MovieViewModel" />
+
+        <variable
+            name="onAddClick"
+            type="com.moaazfathyelneshawy.moviesusingdatabinding.OnMovieClickListener" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:scrollbars="none">
 
-        <ImageView
-            android:id="@+id/frag_details_poster"
-            image_src="@{movie.poster_path}"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY" />
+            android:gravity="center_horizontal"
+            android:onClick="@{() -> onAddClick.onShowAddToFavDialog(movieViewModel.movieModel)}"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/frag_details_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@{movie.title}"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="#000"
-            android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/frag_details_poster"
+                image_src="@{movieViewModel.movieModel.poster_path}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY" />
 
-        <TextView
-            android:id="@+id/frag_details_overview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@{movie.overview}"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="#000"
-            android:textStyle="italic" />
+            <TextView
+                android:id="@+id/frag_details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{movieViewModel.movieModel.title}"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="#000"
+                android:textStyle="bold" />
 
-        <android.support.v7.widget.AppCompatRatingBar
-            style="@style/Base.Widget.AppCompat.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="10"
-            android:layout_marginTop="15dp"
-            android:rating="@{movie.vote_average}" />
+            <TextView
+                android:id="@+id/frag_details_overview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{movieViewModel.movieModel.overview}"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="#000"
+                android:textStyle="italic" />
 
-        <TextView
-            android:id="@+id/frag_details_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@{movie.date}"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:textColor="#8e8e8e"
-            android:textStyle="italic" />
+            <android.support.v7.widget.AppCompatRatingBar
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:numStars="10"
+                android:rating="@{movieViewModel.movieModel.vote_average}" />
 
+            <TextView
+                android:id="@+id/frag_details_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{movieViewModel.movieModel.date}"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#8e8e8e"
+                android:textStyle="italic" />
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>

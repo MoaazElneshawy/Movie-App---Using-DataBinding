@@ -58,7 +58,9 @@ public class MoviesListFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 binding.fragRefresh.setRefreshing(false);
                 if (response != null) {
-
+                    MovieViewModel model = new MovieViewModel();
+                    model.setLoaded(true);
+                    binding.setMovieViewModel(model);
                     jsonFormat(response);
                 }
             }
